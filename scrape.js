@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const fs = require("fs");
 
 (async () => {
     const browser = await puppeteer.launch({
@@ -15,8 +16,7 @@ const puppeteer = require("puppeteer");
     const extractedText = await page.$eval("*", (el) => el.innerText);
 
     //save to file
-    const fs = require("fs");
-     fs.writeFileSync(title + ".txt", extractedText);
+    fs.writeFileSync(title + ".txt", extractedText);
     
 
     await browser.close();
